@@ -1,0 +1,36 @@
+﻿
+例子1
+./skynet config/testserver1_config  测试使用mysql redis
+
+
+例子2
+./skynet config/testserver2_config  测试使用网关
+lua client/client2.lua
+
+例子3
+./skynet config/testserver3_config  测试使用sproto
+lua client/client3.lua
+
+例子4
+./skynet config/testserver4_config  测试使用protobuf
+lua client/client4.lua
+
+例子5
+./skynet config/testserver5_config  测试使用sproto rpc
+lua client/client5.lua
+
+例子6
+./skynet config/testserver6_config  测试使用sproto rpc
+lua client/client6.lua
+
+例子6
+./skynet config/testserver6_config  测试使用sproto rpc   大部分代码是从skynet example里扒下来的
+lua client/client6.lua
+
+例子7
+./skynet config/testserver7_config  测试使用web
+
+
+
+
+其中例子3和例子4 的差别很小，只是协议解析构造部分代码改了

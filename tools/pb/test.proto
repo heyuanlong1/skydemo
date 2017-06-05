@@ -1,0 +1,40 @@
+package clientToServerMsg;
+
+message wailiTestRegRequest
+{
+    required int32 id = 1;
+}
+message wailiTestRegResponse
+{
+    required int32 errorCode = 1;
+    required string authCode = 2;
+}
+message wailiTestLoginRequest
+{
+    required int32 id = 1;
+    required string authCode = 2;
+}
+message wailiTestLoginResponse
+{
+    required int32 errorCode = 1;
+}
+message wailiTestLpushRequest
+{
+    required int32 id = 1;
+    required int32 num = 2;
+}
+message wailiTestLpushResponse
+{
+    required int32 errorCode = 1;
+}
+message wailiTestSortRequest
+{
+
+}
+message wailiTestSortResponse
+{
+    required string value = 1;
+}
+
+
+
