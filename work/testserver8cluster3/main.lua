@@ -10,6 +10,16 @@ skynet.start(function()
     log.info("start testserver8cluster3")
 
 
+    local x = skynet.getenv("testPay")
+    if x == nil then
+    	log.info("testPay is not set")
+    end
+    if x == "true" then
+    	log.info("true")
+    end
+    log.info("skynet.now()"..skynet.now())
+    log.info("skynet.starttime()"..skynet.starttime())
+    log.info("skynet.time()"..skynet.time())
 
     local clusterManager = skynet.newservice("clusterManager")
     skynet.call(clusterManager, "lua", "sendheartbeat", "s1")

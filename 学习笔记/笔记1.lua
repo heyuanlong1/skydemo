@@ -20,3 +20,43 @@
 
 8. https://github.com/cloudwu/skynet/wiki/Cluster
 可以通过 cluster.call(nodename, service, ...) 提起请求。这里 nodename 就是在配置表中给出的节点名。service 可以是一个字符串，或者直接是一个数字地址（如果你能从其它渠道获得地址的话）。当 service 是一个字符串时，只需要是那个节点可以见到的服务别名，可以是全局名或本地名。但更推荐是 . 开头的本地名
+
+
+9.
+skynet.send(address, typename, ...) 这条 API 可以把一条类别为 typename 的消息发送给 address 。它会先经过事先注册的 pack 函数打包 ... 的内容。
+skynet.send 是一条非阻塞 API ，发送完消息后，coroutine 会继续向下运行，这期间服务不会重入。
+
+skynet.call(address, typename, ...) 这条 API 则不同，它会在内部生成一个唯一 session ，并向 address 提起请求，并阻塞等待对 session 的回应（可以不由 address 回应）。当消息回应后，还会通过之前注册的 unpack 函数解包。
+尤其需要留意的是，skynet.call 仅仅阻塞住当前的 coroutine ，而没有阻塞整个服务。在等待回应期间，服务照样可以响应其他请求。所以，尤其要注意，在 skynet.call 之前获得的服务内的状态，到返回后，很有可能改变。
+
+10.
+skynet.redirect(address, source, typename, session, ...) 它和 skynet.send 功能类似，但更细节一些。它可以指定发送地址（把消息源伪装成另一个服务），指定发送的消息的 session 。注：address 和 source 都必须是数字地址，不可以是别名。skynet.redirect 不会调用 pack ，所以这里的 ... 必须是一个编码过的字符串，或是 userdata 加一个长度。
+
+skynet.genid() 生成一个唯一 session 号。
+skynet.rawcall(address, typename, message, size) 它和 skynet.call 功能类似（也是阻塞 API）。但发送时不经过 pack 打包流程，收到回应后，也不走 unpack 流程。
+
+11.
+skynet.start 注册一个函数为这个服务的启动函数。当然你还是可以在脚本中随意写一段 Lua 代码，它们会先于 start 函数执行。但是，不要在外面调用 skynet 的阻塞 API ，因为框架将无法唤醒它们。
+如果你想在 skynet.start 注册的函数之前做点什么，可以调用 skynet.init(function() ... end) 。
+
+skynet.exit() 用于退出当前的服务。
+skynet.kill(address) 可以用来强制关闭别的服务。
+skynet.newservice(name, ...) 用于启动一个新的 Lua 服务。
+skynet.launch(servicename, ...)。
+
+
+skynet.now() 将返回 skynet 节点进程启动的时间。
+skynet.starttime() 返回 skynet 节点进程启动的 UTC 时间，以秒为单位。
+skynet.time() 返回以秒为单位（精度为小数点后两位）的 UTC 时间。它时间上等价于：skynet.now()/100 + skynet.starttime()
+skynet.sleep(ti) 将当前 coroutine 挂起 ti 个单位时间。一个单位是 1/100 秒。
+skynet.yield() 相当于 skynet.sleep(0) 。交出当前服务对 CPU 的控制权。
+skynet.timeout(ti, func) 让框架在 ti 个单位时间后，调用 func 这个函数.
+skynet.fork(func, ...)
+skynet.wait() 把当前 coroutine 挂起。通常这个函数需要结合 skynet.wakeup 使用。
+skynet.wakeup(co) 唤醒一个被 skynet.sleep 或 skynet.wait 挂起的 coroutine 。
+
+
+
+
+
+

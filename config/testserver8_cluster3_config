@@ -19,6 +19,8 @@ lua_cpath = root .. "skynetlib/luaclib/?.so"
 
 gsIndex = 3
 
+testPay = true
+
 --ls配置
 --daemon = "/var/log/skynet/testserver8cluster3.pid"
 --logger = "/var/log/skynet/testserver8cluster3.log"
