@@ -10,15 +10,15 @@ local level =
 }
 local levelTags = 
 {
-    [level.debug] 		= "debug",
-    [level.info] 		= "info",
-    [level.warning] 	= "warning",
-    [level.error] 		= "error",
+    [level.debug] 		= "d",
+    [level.info] 		= "i",
+    [level.warning] 	= "w",
+    [level.error] 		= "e",
 }
 
 local function defaultFormat(logLevel, moduleName, msg, ...)
     msg = string.format(msg, ...)
-    return string.format([[[%s] [%s] [%s]: %s]], levelTags[logLevel], moduleName, os.date(os.date("%Y-%m-%d %H:%M:%S")), msg)
+    return string.format([[[%s][%s][%s]:%s]], levelTags[logLevel], moduleName, os.date(os.date("%Y-%m-%d %H:%M:%S")), msg)
 end
 
 local function defaultOut(msg)

@@ -15,6 +15,9 @@ lua client/client3.lua
 ./skynet config/testserver4_config  测试使用protobuf
 lua client/client4.lua
 
+其中例子3和例子4 的差别很小，只是协议解析构造部分代码改了
+
+
 例子5
 ./skynet config/testserver5_config  测试使用sproto rpc
 lua client/client5.lua
@@ -30,7 +33,11 @@ lua client/client6.lua
 例子7
 ./skynet config/testserver7_config  测试使用web
 
+例子8
+./skynet config/testserver8_cluster1_config			测试cluster  2和3向1发送心跳，2向3请求信息
+./skynet config/testserver8_cluster2_config
+./skynet config/testserver8_cluster3_config
 
 
 
-其中例子3和例子4 的差别很小，只是协议解析构造部分代码改了
+补上 master/slave模式
