@@ -129,4 +129,16 @@ function utils.getSuccessResponse(data)
     return rsp, nil
 end
 
+-- urldecode
+function utils.urldecode(s)
+    s = string.gsub(s, '%%(%x%x)', function(h) return string.char(tonumber(h, 16)) end)
+    return s
+end
+
+-- urlencode
+function utils.urlencode(s)
+    s = string.gsub(s, "([^%w%.%- ])", function(c) return string.format("%%%02X", string.byte(c)) end)
+    return s
+end
+
 return utils

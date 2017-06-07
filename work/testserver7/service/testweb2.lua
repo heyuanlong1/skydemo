@@ -13,10 +13,12 @@ function CMD.run(query)
 		commonlog.web.error(k..":"..v)
 	end	
 
-	local status, arg = pcall(function() return json.decode(query.data) end)
-	if status then
+	local udata = utils.urldecode(query.data)
+
+	local status, arg = pcall(function() return json.decode(udata) end)
+	if status and type(arg) == "table" then
 		for k,v in pairs(arg) do
-			commonlog.web.error(k..":"..v)
+			commonlog.web.error("shuchu:"..k..":"..v)
 		end
 	else
 		commonlog.web.error("json.decode,error:"..arg)

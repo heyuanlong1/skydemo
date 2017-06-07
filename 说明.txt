@@ -32,12 +32,11 @@ lua client/client6.lua
 
 例子7
 ./skynet config/testserver7_config  测试使用web
+curl '127.0.0.1:6000/testweb1?arg1=111&arg2=222'
+curl '127.0.0.1:6000/testweb2?data=%7b"msgid":100,"msg":"mmmmmmmmmmm"%7d'
 
 例子8
 ./skynet config/testserver8_cluster1_config			测试cluster  2和3向1发送心跳，2向3请求信息
 ./skynet config/testserver8_cluster2_config
 ./skynet config/testserver8_cluster3_config
 
-
-
-补上 master/slave模式

@@ -57,6 +57,24 @@ skynet.wakeup(co) 唤醒一个被 skynet.sleep 或 skynet.wait 挂起的 corouti
 
 
 
+12 socket api
+https://github.com/cloudwu/skynet/wiki/Socket
+
+13.
+skynet.uniqueservice 和 skynet.newservice 的输入参数相同，都可以以一个脚本名称找到一段 lua 脚本并启动它，返回这个服务的地址。但和 newservice 不同，每个名字的脚本在同一个 skynet 节点只会启动一次。如果已有同名服务启动或启动中，后调用的人获得的是前一次启动的服务的地址。
+默认情况下，uniqueservice 是不跨节点的。
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
