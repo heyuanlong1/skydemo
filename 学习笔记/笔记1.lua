@@ -68,10 +68,16 @@ skynet.uniqueservice 和 skynet.newservice 的输入参数相同，都可以以�
 
 
 
+{
+	https://github.com/forthxu/talkbox
+	有注册消息（skynet.register_protocol {}）的示例 
 
+	https://github.com/greathqy/mud_build_on_skynet
+	给agent做个池
 
-
-
+	https://github.com/fztcjjl/metoo
+	
+}
 
 
 
