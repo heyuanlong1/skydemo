@@ -23,10 +23,6 @@ lua client/client4.lua
 lua client/client5.lua
 
 例子6
-./skynet config/testserver6_config  测试使用sproto rpc
-lua client/client6.lua
-
-例子6
 ./skynet config/testserver6_config  测试使用sproto rpc   大部分代码是从skynet example里扒下来的
 lua client/client6.lua
 
