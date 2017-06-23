@@ -17,6 +17,8 @@ skynet.start(function()
         nodelay = true,
     })
 
+    local test1 = skynet.newservice("test1")
+    --skynet.call(test1, "lua", "start")
 
     skynet.exit()
 end)
