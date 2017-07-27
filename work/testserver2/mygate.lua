@@ -30,7 +30,9 @@ end
 function handler.message(fd, msg, sz)
 
     local packet = skynet.tostring(msg, sz)
-    print("packet:"..packet)
+    print("packet:"..packet.."___111111111111")
+    skynet.sleep(5 * 100)
+    print("packet:"..packet.."___222222222222")
     socketdriver.send(fd, packet)
     
 end

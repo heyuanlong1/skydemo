@@ -7,12 +7,13 @@ end
 
 local socket = require "clientsocket"
 local fd = assert(socket.connect("127.0.0.1", 9021))
-
+local x = 0
 while true do
-    socket.send(fd, string.pack(">s2", "client2...") )
+	x = x + 1
+    socket.send(fd, string.pack(">s2", "client2..."..x) )
     local str   = socket.recv(fd)
     if str ~= nil then
         print("msg:"..str)
     end
-    socket.usleep(100000)
+    socket.usleep(1000000)
 end
