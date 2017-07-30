@@ -46,57 +46,6 @@ end
 
 skynet.start(function()
 
-
-<<<<<<< HEAD
--- 	log = logger.create("testServer9",logger.level.debug)
---     log.info("start testServer9")
-
---     local recvheader = {}
---     local header = {}
---     header.AppKey="6239251ba82728b7148085debfe9df09"
---     header.Nonce="4tgggergigwow323t23t"
---     header.CurTime=math.floor(skynet.time())
---     local ll = header.AppKey..header.Nonce..header.CurTime
---     print("ll:"..ll)
---     local ss = crypt.sha1(ll)
---     print("ss:"..ss)
---     header.CheckSum= crypt.hexencode(ss)
---     print("header.CheckSum:"..header.CheckSum)
---     header["Content-Type"]="application/x-www-form-urlencoded;charset=utf-8"
-
---     for k,v in pairs(header) do
---         print(k,v)
---     end
-
--- --curl -X POST -H "AppKey: 6239251ba82728b7148085debfe9df09" -H "CurTime: 1498815463" -H "CheckSum: 303c572ec731468dec7a5cd09d7643a6d23" -H "Nonce: 679415" -H "Content-Type: application/x-www-form-urlencoded" -d 'mobile=13430124629' 'https://api.netease.im/sms/sendcode.action'
-
-
-
-
---     local value ,body= httpc.request("POST", "api.netease.im", "https://api.netease.im/sms/sendcode.action", recvheader, header, "mobile=13430124629")
---     print("value:"..value)
---     print("body:"..body)
---     if type(value) == "string" then
---         log.info(value)
---     end
---     if type(value) == "table" then
---         for i, v in ipairs(value) do
---             log.info(i..":"..v)
---         end
---     end
-
---     for k,v in pairs(recvheader) do
---         print(k,v)
---     end
-    skynet.newservice("debug_console", 6009)
-
-    print("Server Start")
-    local t = {}
-    for i = 1, 100000 do
-        t[i] = load("return aaaaaaaaaaaaaaaaaaaa, " .. i)
-    end
-    t = nil
-=======
 	log = logger.create("testServer9",logger.level.debug)
     log.info("start testServer9")
 
@@ -138,8 +87,6 @@ skynet.start(function()
         print(k,v)
     end
 
-
->>>>>>> 2ccf9de367ef35c2aedad01f5fe24d61faf0bf16
 
     skynet.exit()
 end)

@@ -18,13 +18,8 @@ lua_path = root.."skynetlib/lualib/?.lua;"..root.."skynetlib/lualib/?/init.lua;"
 lua_cpath = root .. "skynetlib/luaclib/?.so"
 
 --ls配置
-<<<<<<< HEAD
 daemon = "/var/log/skynet/testServer9.pid"
 logger = "/var/log/skynet/testServer9.log"
 logpath = "."
-=======
---daemon = "/var/log/skynet/testServer9.pid"
---logger = "/var/log/skynet/testServer9.log"
---logpath = "."
->>>>>>> 2ccf9de367ef35c2aedad01f5fe24d61faf0bf16
+
 
