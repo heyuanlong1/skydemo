@@ -23,12 +23,7 @@ function deepcopy(orig)
     return copy
 end
 
-skynet.start(function()
-
-
-    skynet.newservice("debug_console", 6009)
-
-    print("Server Start")
+function ffff( )
     local t = {}
     str = "{['A']=1,['B']={1,{['y']=0.1,['x']='strB2x'},['b']='strBb'}}"
     for i = 1, 100000 do
@@ -37,6 +32,15 @@ skynet.start(function()
         --print(t[i]['A'])
     end
     t =nil
+end
 
-   skynet.exit()
+skynet.start(function()
+
+
+    skynet.newservice("debug_console", 6009)
+
+    print("Server Start")
+    ffff()
+
+   --skynet.exit()
 end)
