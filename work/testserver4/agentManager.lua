@@ -1,7 +1,7 @@
 local skynet 		= require "skynet"
 local gateserver 	= require "snax.gateserver"
 local socketdriver 	= require "socketdriver"
-
+local netpack   = require "netpack"
 
 local connctionAgents = {}
 
@@ -33,7 +33,7 @@ end
 
 function handler.message(fd, msg, sz)		--处理网络包
 	if connctionAgents[fd] ~= nil then
-	    local packet = skynet.tostring(msg, sz)
+	    local packet = netpack.tostring(msg, sz)
 	    skynet.call(connctionAgents[fd], "lua", "message", packet)
     end
 end
