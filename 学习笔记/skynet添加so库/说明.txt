@@ -1,0 +1,12 @@
+lua-codec.c来源 https://github.com/mashijie/lua-codec  （自己有修改过）
+
+
+makefile文件里添加
+$(LUA_CLIB_PATH)/codec.so : lualib-src/lua-codec.c | $(LUA_CLIB_PATH)
+	$(CC) $(CFLAGS) $(SHARED)  -lcrypto -Iskynet-src $^ -o $@	
+
+
+make luaclib/codec.so  生成so文件
+
+
+最怕这里有内存泄露哈

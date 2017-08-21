@@ -39,6 +39,12 @@ end
 dealCmd[pbCode.clientToServerMsg.wailiTestLoginRequest] = function( req )
     local  userID = req.id
     local authCode =req.authCode
+    if authCode == nil then
+        print("nilnilnilnilnilnilnil")
+    end
+    if authCode == "" then
+        print("nnnnnnnnnnnnnnnnnnnnnn") -- 打印这里
+    end
 
     local resp = {
         errorCode = 200,

@@ -36,3 +36,7 @@ curl '127.0.0.1:6000/testweb2?data=%7b"msgid":100,"msg":"mmmmmmmmmmm"%7d'
 ./skynet config/testserver8_cluster2_config
 ./skynet config/testserver8_cluster3_config
 
+
+
+例子11
+./skynet config/testserver11_config		测试codec.so
