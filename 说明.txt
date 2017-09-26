@@ -40,3 +40,9 @@ curl '127.0.0.1:6000/testweb2?data=%7b"msgid":100,"msg":"mmmmmmmmmmm"%7d'
 
 例子11
 ./skynet config/testserver11_config		测试codec.so
+
+例子12
+./skynet config/testserver12_config		测试httpc
+
+例子12
+./skynet config/testserver13_config		测试webclient

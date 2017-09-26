@@ -7,10 +7,10 @@ local logger = require "common.log.skynetlog"
 local httpc = require "http.httpc"
 local crypt = require "crypt"
 local codec = require "codec"
+local xxtea = require "xxtea"
+local md5 = require "md5"
 
-
-
-function ffff( )
+function codec_test( )
     local src = '123456'
     local privpem = [[-----BEGIN RSA PRIVATE KEY-----
 MIICXAIBAAKBgQCsxjKD2lnmkmELoo5QphM/VdREJKym26R0T+19JDa3MVZFDbwg
@@ -42,11 +42,28 @@ VP8peZI+QZEVVzaE2Ci5n0lP9v9GUSl0QfZU94uIwl++BVq0VFvbHax/R/q4oTRD
     print(ok)
 end
 
+function xxtea_test( )
+    local text = "sldfhlsfjlsdjflsjofldjslfjsdfjs545df4s841f5sdf4s4";
+    local key = "1234567890";
+    local encrypt_data = xxtea.encrypt(text, key);
+    local decrypt_data = xxtea.decrypt(encrypt_data, key);
+    if text == decrypt_data then
+        print("success!\n");
+        local sign_server = md5.sumhexa(encrypt_data)
+        print(encrypt_data.."\n"..string.len(encrypt_data));
+        print(sign_server.."\n");
+        
+    else
+        print("fail!\n");
+    end
+end
+
+
 skynet.start(function()
 
-
     print("Server Start")
-    ffff()
+    codec_test()
+    xxtea_test()
 
     skynet.exit()
 end)
