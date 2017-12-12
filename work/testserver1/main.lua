@@ -5,6 +5,13 @@ local mysqldb = require "common.db.mysql.mysqldb"
 local logger = require "common.log.skynetlog"
 local httpc = require "http.httpc"
 
+
+
+
+
+
+
+
 skynet.start(function()
 	log = logger.create("testServer1",logger.level.debug)
     log.info("start testServer1")
@@ -49,6 +56,23 @@ skynet.start(function()
 
     local value = skynet.call(".redis_test1", "lua", "HGET", 1201, "auth")
     log.info(value)
+
+    local addr = ".redis_test1"
+    local iss = skynet.call(addr, "lua", "exists", "tttt_key1")
+    log.info(type(iss))
+    log.info(iss)
+
+    local lists = {}
+    --skynet.call(addr, "lua", "SADD", "tttt_key1", table.unpack(lists)) 
+
+    local result = skynet.call(addr, "lua", "SMEMBERS", "tttt_key1")
+    for i, v in ipairs(result) do
+        local id = tonumber(v)
+        log.info(id)
+    end
+    local iss = skynet.call(addr, "lua", "exists", "tttt_key1")
+    log.info(type(iss))
+    log.info(iss)
 
 
     skynet.exit()

@@ -1,7 +1,6 @@
 local skynet = require "skynet"
 local config = require "config.testServer1Config"
-local redisdb = require "common.db.redis.redisdb"
-local mysqldb = require "common.db.mysql.mysqldb"
+
 local logger = require "common.log.skynetlog"
 
 
@@ -13,6 +12,7 @@ skynet.start(function()
    -- print(y)
 
  local x ,y= skynet.call(webclient, "lua", "request", "https://www.baidu.com/")
+
    print(x)
    print(y)
 
