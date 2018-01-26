@@ -43,16 +43,32 @@ VP8peZI+QZEVVzaE2Ci5n0lP9v9GUSl0QfZU94uIwl++BVq0VFvbHax/R/q4oTRD
 end
 
 function xxtea_test( )
-    local text = "sldfhlsfjlsdjflsjofldjslfjsdfjs545df4s841f5sdf4s4";
-    local key = "1234567890";
+    local text = "0&&1023unxyy";
+    local key = "Hkg5Ft#3S19Nku0a";
     local encrypt_data = xxtea.encrypt(text, key);
+    print("47.74.151.116:5941".."/buy_response?str="..encrypt_data)
+    local status, body = httpc.get("47.74.151.116:5941", "/buy_response?str="..encrypt_data, {})
+
+    print(status)
+    print(body)
+
     local decrypt_data = xxtea.decrypt(encrypt_data, key);
     if text == decrypt_data then
         print("success!\n");
-        local sign_server = md5.sumhexa(encrypt_data)
         print(encrypt_data.."\n"..string.len(encrypt_data));
-        print(sign_server.."\n");
-        
+
+        local str = encrypt_data
+        local str_len  = #str
+        print("str_len:"..str_len)
+        for i=1,str_len do
+            print(i..":"..string.byte(str,i))
+        end
+
+        local md5_str = md5.sumhexa(encrypt_data)
+        local base64_str = crypt.base64encode(encrypt_data)
+        print(md5_str.."\n");
+        print(base64_str.."\n");
+        print(xxtea.decrypt(crypt.base64decode(base64_str),key).."\n");
     else
         print("fail!\n");
     end
